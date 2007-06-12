@@ -15,6 +15,10 @@ containing n1 atoms of element elem1, n2 atoms of element elem2, up to however \
 many elements are desired, and having an overall electric charge of chrg."
 
 
+ReactionAtomBalance::usage="ReactionAtomBalance[rxn] sums up the elements on \
+the left and right sides of a reaction and sets them Equal to each other."
+
+
 Begin["`Private`"]
 (* Implementation of the package *)
 
@@ -83,6 +87,12 @@ Through[{Update,Protect,Update}[Times]]
 
 
 setElementFormat@@@elements
+
+
+ReactionAtomBalance[_[sides__]]:=
+	Equal[sides]/.Molecule[args__,_]:>Plus@args/.
+		(elementHead:Alternatives@@CPChem`Private`elements[[All,1]])[
+			elementNumber_]:>elementNumber*elementHead
 
 
 End[]
