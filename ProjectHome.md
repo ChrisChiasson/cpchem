@@ -1,0 +1,1 @@
+This package stores some notations I have created for displaying chemical formulas in Mathematica. I don't make any claims about it being an awesome design. So far, it is only what I need to complete work on another project.
